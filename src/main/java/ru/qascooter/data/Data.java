@@ -1,4 +1,4 @@
-package ru.qaScooter.data;
+package ru.qascooter.data;
 
 public class Data {
     //api

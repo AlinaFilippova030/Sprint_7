@@ -1,4 +1,4 @@
-package ru.qaScooter;
+package ru.qascooter;
 
 import io.qameta.allure.Step;
 import io.qameta.allure.junit4.DisplayName;
@@ -7,16 +7,15 @@ import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import ru.qaScooter.courier.CourierLogin;
-import ru.qaScooter.courier.CourierSteps;
-import ru.qaScooter.courier.CreateNewCourier;
-import ru.qaScooter.data.Data;
+import ru.qascooter.courier.CourierLogin;
+import ru.qascooter.courier.CourierSteps;
+import ru.qascooter.courier.CreateNewCourier;
+import ru.qascooter.data.Data;
 
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
-import static org.apache.http.HttpStatus.SC_CREATED;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.apache.http.HttpStatus.SC_NOT_FOUND;
 import static org.apache.http.HttpStatus.SC_BAD_REQUEST;
@@ -31,14 +30,14 @@ public class CourierLoginTest {
         RestAssured.baseURI = Data.SCOOTER_URL;
         courierSteps = new CourierSteps();
         // Создание курьера
-        TestCourier();
+        testCourier();
     }
 
 
     @Test
     @DisplayName("Успешная авторизация курьера")
     public void successfulLoginTest() {
-        SuccessfulLogin();
+        successfulLogin();
     }
 
     @Test
@@ -95,7 +94,7 @@ public class CourierLoginTest {
     }
 
     @Step("Создать нового курьера")
-    private void TestCourier() {
+    private void testCourier() {
         CreateNewCourier courier = new CreateNewCourier(Data.LOGIN, Data.PASSWORD, Data.FIRST_NAME);
         courierSteps.createNewCourier(courier);
 
@@ -106,7 +105,7 @@ public class CourierLoginTest {
     }
 
     @Step("Успешная авторизация статус 200, id присутствует")
-    private void SuccessfulLogin() {
+    private void successfulLogin() {
         CourierLogin validCredentials = new CourierLogin(Data.LOGIN, Data.PASSWORD);
         Response response = courierSteps.loginCourier(validCredentials);
 

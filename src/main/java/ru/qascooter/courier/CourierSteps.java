@@ -1,8 +1,8 @@
-package ru.qaScooter.courier;
+package ru.qascooter.courier;
 
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
-import ru.qaScooter.data.Data;
+import ru.qascooter.data.Data;
 
 import static io.restassured.RestAssured.given;
 

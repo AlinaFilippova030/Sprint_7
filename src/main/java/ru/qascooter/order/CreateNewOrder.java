@@ -1,4 +1,4 @@
-package ru.qaScooter.order;
+package ru.qascooter.order;
 
 public class CreateNewOrder {
     private String firstName;

@@ -1,4 +1,4 @@
-package ru.qaScooter;
+package ru.qascooter;
 
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
@@ -10,9 +10,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import ru.qaScooter.data.Data;
-import ru.qaScooter.order.CreateNewOrder;
-import ru.qaScooter.order.OrderSteps;
+import ru.qascooter.data.Data;
+import ru.qascooter.order.CreateNewOrder;
+import ru.qascooter.order.OrderSteps;
 
 import static org.apache.http.HttpStatus.SC_CREATED;
 import static org.hamcrest.CoreMatchers.equalTo;

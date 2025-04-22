@@ -1,4 +1,4 @@
-package ru.qaScooter.courier;
+package ru.qascooter.courier;
 
 
 public class CreateNewCourier {

@@ -1,4 +1,4 @@
-package ru.qaScooter;
+package ru.qascooter;
 
 import io.qameta.allure.Step;
 import io.restassured.RestAssured;
@@ -6,10 +6,10 @@ import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import ru.qaScooter.courier.CourierLogin;
-import ru.qaScooter.courier.CourierSteps;
-import ru.qaScooter.courier.CreateNewCourier;
-import ru.qaScooter.data.Data;
+import ru.qascooter.courier.CourierLogin;
+import ru.qascooter.courier.CourierSteps;
+import ru.qascooter.courier.CreateNewCourier;
+import ru.qascooter.data.Data;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -66,9 +66,7 @@ public class CreateNewCourierTest {
     public void createDuplicateCourier() {
         createTestCourier();
         loginAndGetCourierId();
-
-        Response response = courierSteps.createNewCourier(courier);
-        verifyConflict(response, "Этот логин уже используется. Попробуйте другой.");
+        createCourierDouble(courier);
     }
 
     @After
@@ -94,7 +92,7 @@ public class CreateNewCourierTest {
         assertThat(courierId, notNullValue());
     }
 
-    @Step("Создать дубль курьера")
+    @Step("Создать курьера без имени")
     private void createCourier(CreateNewCourier courier) {
         Response response = courierSteps.createNewCourier(courier);
         assertThat(response.statusCode(), equalTo(SC_CREATED));
@@ -104,8 +102,7 @@ public class CreateNewCourierTest {
     @Step("Создать курьера c существующим Логином и паролем")
     private void createCourierDouble(CreateNewCourier courier) {
         Response response = courierSteps.createNewCourier(courier);
-        assertThat(response.statusCode(), equalTo(SC_CREATED));
-        assertThat(response.path("ok"), equalTo(true));
+        verifyConflict(response, "Этот логин уже используется. Попробуйте другой.");
     }
 
     @Step("Проверить ошибку 400: {expectedMessage}")

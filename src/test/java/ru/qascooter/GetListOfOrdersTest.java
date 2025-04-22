@@ -1,4 +1,4 @@
-package ru.qaScooter;
+package ru.qascooter;
 
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
@@ -6,8 +6,8 @@ import io.restassured.response.Response;
 import org.junit.Before;
 import org.junit.Test;
 import io.qameta.allure.Step;
-import ru.qaScooter.data.Data;
-import ru.qaScooter.order.OrderSteps;
+import ru.qascooter.data.Data;
+import ru.qascooter.order.OrderSteps;
 
 import java.util.List;
 
